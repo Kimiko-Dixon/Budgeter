@@ -1,20 +1,21 @@
 const Users = require('./users')
+const Budgets = require('./budgets')
 const Expenses = require('./expenses')
-const ExpenseTypes = require('./expenseTypes')
+// const ExpenseTypes = require('./expenseTypes')
 const Payments = require('./payments')
 
-Users.hasMany(Expenses,{
+Users.hasOne(Budgets,{
     foreignKey:'user_id'
 })
-Expenses.belongsTo(Users,{
+Budgets.belongsTo(Users,{
     foreignKey:'user_id'
 })
 
-Users.hasMany(Payments,{
-    foreignKey:'user_id'
+Budgets.hasMany(Expenses,{
+    foreignKey:'budget_id'
 })
-Payments.belongsTo(Users,{
-    foreignKey:'user_id'
+Expenses.belongsTo(Budgets,{
+    foreignKey:'budget_id'
 })
 
 Expenses.hasMany(Payments,{
@@ -24,11 +25,11 @@ Payments.belongsTo(Expenses,{
     foreignKey:'expense_id'
 })
 
-ExpenseTypes.hasMany(Expenses,{
+/* ExpenseTypes.hasMany(Expenses,{
     foreignKey:'type_id'
 })
 Expenses.belongsTo(ExpenseTypes,{
     foreignKey:'type_id'
-})
+}) */
 
-module.exports = {Users,Expenses,ExpenseTypes,Payments}
+module.exports = {Users,Budgets,Expenses,Payments}
