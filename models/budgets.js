@@ -1,9 +1,9 @@
 const {Model,DataTypes} = require('sequelize')
 const sequelize = require('../config/connection.js')
 
-class Payments extends Model{}
+class Budgets extends Model{}
 
-Payments.init(
+Budgets.init(
     {
         id:{
             type:DataTypes.INTEGER,
@@ -12,33 +12,26 @@ Payments.init(
             unique:true,
             primaryKey:true
         },
-        payment:{
+        net_monthly_income:{
             type:DataTypes.DECIMAL,
             allowNull:false,
         },
-        expense_id:{
-            type:DataTypes.INTEGER,
-            references:{
-                model:'expenses',
-                key:'id'
-            }
-        },
-       /*  user_id:{
+        user_id:{
             type:DataTypes.INTEGER,
             references:{
                 model:'users',
                 key:'id'
             }
-        }, */
+        }
     },
     {
         sequelize,
         underscored:true,
         freezeTableName:true,
         timestamps:false,
-        modelName:'payments',
+        modelName:'budgets',
 
     }
 )
 
-module.exports = Payments
+module.exports = Budgets

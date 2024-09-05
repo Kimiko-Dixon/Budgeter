@@ -1,4 +1,4 @@
-const {Model,DataTypes} = require('sequelize')
+/* const {Model,DataTypes} = require('sequelize')
 const sequelize = require('../config/connection.js')
 
 class ExpenseTypes extends Model{}
@@ -26,4 +26,4 @@ ExpenseTypes.init(
     }
 )
 
-module.exports = ExpenseTypes
+module.exports = ExpenseTypes */

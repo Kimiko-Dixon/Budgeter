@@ -1,7 +1,11 @@
 const {Model,DataTypes} = require('sequelize')
 const sequelize = require('../config/connection.js')
 
-class Users extends Model{}
+class Users extends Model{
+    isPassword(password){
+        return (password === this.password)
+    }
+}
 
 Users.init(
     {
@@ -9,7 +13,8 @@ Users.init(
             type:DataTypes.INTEGER,
             allowNull:false,
             autoIncrement:true,
-            unique:true
+            unique:true,
+            primaryKey:true
         },
         username:{
             type:DataTypes.STRING,

@@ -9,7 +9,8 @@ Expenses.init(
             type:DataTypes.INTEGER,
             allowNull:false,
             autoIncrement:true,
-            unique:true
+            unique:true,
+            primaryKey:true
         },
         name:{
             type:DataTypes.STRING,
@@ -19,7 +20,14 @@ Expenses.init(
             type:DataTypes.DECIMAL,
             allowNull:false,
         },
-        type_id:{
+        budget_id:{
+            type:DataTypes.INTEGER,
+            references:{
+                model:'budgets',
+                key:'id'
+            }
+        },
+        /* type_id:{
             type:DataTypes.INTEGER,
             references:{
                 model:'expense_types',
@@ -32,7 +40,7 @@ Expenses.init(
                 model:'users',
                 key:'id'
             }
-        }
+        } */
     },
     {
         sequelize,
